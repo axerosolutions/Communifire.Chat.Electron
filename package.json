@@ -1,13 +1,13 @@
 {
-  "name": "rocketchat",
-  "description": "Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat",
+  "name": "communifire",
+  "description": "Official OSX, Windows, and Linux Desktop Clients for Communifire",
   "version": "2.17.9",
   "author": "Rocket.Chat Support <support@rocket.chat>",
   "copyright": "© 2019, Rocket.Chat",
   "homepage": "https://rocket.chat",
   "license": "MIT",
   "keywords": [
-    "rocketchat",
+    "communifire",
     "desktop",
     "electron"
   ],
@@ -86,5 +86,5 @@
     "npm": ">=6.9.x",
     "yarn": ">=1.17.x"
   },
-  "productName": "Rocket.Chat"
+  "productName": "Communifire"
 }

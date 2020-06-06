@@ -228,7 +228,7 @@ class Servers extends EventEmitter {
 	}
 
 	setHostTitle(hostUrl, title) {
-		if (title === 'Rocket.Chat' && /https?:\/\/open\.rocket\.chat/.test(hostUrl) === false) {
+		if (title === 'Communifire' && /https?:\/\/open\.rocket\.chat/.test(hostUrl) === false) {
 			title += ` - ${ hostUrl }`;
 		}
 		const { hosts } = this;

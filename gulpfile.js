@@ -59,7 +59,7 @@ task('release:linux', () => build({
 	publish: NODE_ENV === 'production' ? 'onTagOrDraft' : 'never',
 	x64: true,
 	linux: [],
-	c: { productName: 'rocketchat' },
+	c: { productName: 'communifire' },
 }));
 
 task('release:win32', () => build({
