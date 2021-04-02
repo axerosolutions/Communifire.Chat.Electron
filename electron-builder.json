@@ -20,7 +20,7 @@
     "bundleVersion": "82",
     "helperBundleId": "chat.rocket.electron.helper",
     "type": "distribution",
-    "artifactName": "rocketchat-${version}.${ext}",
+    "artifactName": "communifire-${version}.${ext}",
     "extendInfo": {
       "NSMicrophoneUsageDescription": "I need access to your microphone to record the audio you want to send.",
       "NSCameraUsageDescription": "I need access to your camera to record the video you want to send."
@@ -56,7 +56,7 @@
     "asarUnpack": [
       "node_modules"
     ],
-    "artifactName": "rocketchat-${version}-mas.${ext}"
+    "artifactName": "communifire-${version}-mas.${ext}"
   },
   "win": {
     "target": [
@@ -83,7 +83,7 @@
     "uninstallDisplayName": "${productName} ${version}",
     "include": "build/installer.nsh",
     "license": "LICENSE",
-    "artifactName": "rocketchat-setup-${version}.${ext}",
+    "artifactName": "communifire-setup-${version}.${ext}",
     "deleteAppDataOnUninstall": false,
     "displayLanguageSelector": false,
     "unicode": true,
@@ -94,18 +94,18 @@
     "menuCategory": false
   },
   "msi": {
-    "artifactName": "rocketchat-setup-${version}.${ext}"
+    "artifactName": "communifire-setup-${version}.${ext}"
   },
   "appx": {
     "backgroundColor": "#2f343d",
-    "displayName": "Rocket.Chat",
-    "publisherDisplayName": "Rocket.Chat",
+    "displayName": "Communifire",
+    "publisherDisplayName": "Communifire",
     "languages": [
       "en-US",
       "en-GB",
       "pt-BR"
     ],
-    "artifactName": "rocketchat-${version}-${arch}.${ext}"
+    "artifactName": "communifire-${version}-${arch}.${ext}"
   },
   "linux": {
     "target": [
@@ -114,22 +114,22 @@
       "rpm",
       "snap"
     ],
-    "executableName": "rocketchat-desktop",
+    "executableName": "communifire-desktop",
     "category": "GNOME;GTK;Network;InstantMessaging",
     "desktop": {
       "StartupWMClass": "Rocket.Chat",
       "MimeType": "x-scheme-handler/rocketchat"
     },
-    "artifactName": "rocketchat-${version}.${ext}"
+    "artifactName": "communifire-${version}.${ext}"
   },
   "deb": {
-    "artifactName": "rocketchat_${version}_${arch}.${ext}"
+    "artifactName": "communifire_${version}_${arch}.${ext}"
   },
   "rpm": {
-    "artifactName": "rocketchat-${version}.${arch}.${ext}"
+    "artifactName": "communifire-${version}.${arch}.${ext}"
   },
   "snap": {
-    "artifactName": "rocketchat_${version}_${arch}.${ext}",
+    "artifactName": "communifire_${version}_${arch}.${ext}",
     "plugs": [
       "desktop",
       "desktop-legacy",
@@ -153,8 +153,8 @@
   "publish": [
     {
       "provider": "github",
-      "owner": "RocketChat",
-      "repo": "Rocket.Chat.Electron",
+      "owner": "axerosolutions",
+      "repo": "Communifire.Chat.Electron",
       "vPrefixedTagName": false
     }
   ]

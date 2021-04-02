@@ -62,14 +62,14 @@ jobs:
           path: ./app
       - run: yarn electron-builder --x64 --dir
       - run: |
-          $job = Start-Job -ScriptBlock { .\dist\win-unpacked\Rocket.Chat.exe }
+          $job = Start-Job -ScriptBlock { .\dist\win-unpacked\Communifire.exe }
           if (Wait-Job $job -Timeout 30) {
             Write-Host $(Receive-Job -Job $job)
           }
           Remove-Job -force $job
       - run: yarn electron-builder --ia32 --dir
       - run: |
-          $job = Start-Job -ScriptBlock { .\dist\win-ia32-unpacked\Rocket.Chat.exe }
+          $job = Start-Job -ScriptBlock { .\dist\win-ia32-unpacked\Communifire.exe }
           if (Wait-Job $job -Timeout 30) {
             Write-Host $(Receive-Job -Job $job)
           }
@@ -95,7 +95,7 @@ jobs:
       - run: yarn electron-builder --dir
       - run: |
           brew install coreutils
-          gtimeout 30 ./dist/mac/Rocket.Chat.app/Contents/MacOS/Rocket.Chat || code=$?
+          gtimeout 30 ./dist/mac/Communifire.app/Contents/MacOS/Communifire || code=$?
           if [[ $code -ne 124 && $code -ne 0 ]]; then
             exit $code;
           fi
@@ -119,7 +119,7 @@ jobs:
           path: ./app
       - run: yarn electron-builder --dir
       - run: |
-          xvfb-run timeout 30 ./dist/linux-unpacked/rocketchat-desktop || code=$?
+          xvfb-run timeout 30 ./dist/linux-unpacked/communifire-desktop || code=$?
           if [[ $code -ne 124 && $code -ne 0 ]]; then
             exit $code;
           fi

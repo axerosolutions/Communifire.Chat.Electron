@@ -1,19 +1,19 @@
 {
-  "name": "rocketchat",
-  "description": "Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat",
+  "name": "communifire",
+  "description": "Official OSX, Windows, and Linux Desktop Clients for Communifire",
   "version": "3.1.1",
   "author": "Rocket.Chat Support <support@rocket.chat>",
   "copyright": "© 2016-2020, Rocket.Chat",
   "homepage": "https://rocket.chat",
   "license": "MIT",
   "keywords": [
-    "rocketchat",
+    "communifire",
     "desktop",
     "electron"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RocketChat/Rocket.Chat.Electron.git"
+    "url": "git+https://github.com/axerosolutions/Communifire.Chat.Electron.git"
   },
   "bugs": {
     "url": "https://github.com/RocketChat/Rocket.Chat.Electron/issues"
@@ -118,5 +118,5 @@
     "node": ">=12.8.x",
     "yarn": ">=1.22.x"
   },
-  "productName": "Rocket.Chat"
+  "productName": "Communifire.Chat"
 }
