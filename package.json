@@ -1,5 +1,5 @@
 {
-  "name": "communifire",
+  "name": "communifire.chat",
   "description": "Official OSX, Windows, and Linux Desktop Clients for Communifire",
   "version": "3.1.1",
   "author": "Rocket.Chat Support <support@rocket.chat>",
@@ -118,5 +118,5 @@
     "node": ">=12.8.x",
     "yarn": ">=1.22.x"
   },
-  "productName": "Communifire.Chat"
-}
+  "productName": "Communifire Desktop Chat App"
+  }

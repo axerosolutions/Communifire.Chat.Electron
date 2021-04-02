@@ -54,7 +54,7 @@
     "update": {
       "title": "Frissítés érhető el",
       "announcement": "Új frissítés érhető el",
-      "message": "Elérhető a Communifire asztali alkalmazás új verziója!",
+      "message": "Elérhető a Communifire Chat asztali alkalmazás új verziója!",
       "currentVersion": "Jelenlegi verzió:",
       "newVersion": "Új verzió:",
       "install": "Frissítés telepítése",
@@ -158,7 +158,7 @@
   },
   "selfxss": {
     "title": "Megállj!",
-    "description": "Ez a böngészőfunkció fejlesztők számára készült. Ha valaki azt mondja, hogy másoljon le és illesszen be valamit ide, azért hogy egy Communifire funkciót engedélyezzen vagy feltörje valaki más fiókját, akkor az átverés, és hozzáférést fog adni nekik az Ön Communifire fiókjához.",
+    "description": "Ez a böngészőfunkció fejlesztők számára készült. Ha valaki azt mondja, hogy másoljon le és illesszen be valamit ide, azért hogy egy Communifire Chat funkciót engedélyezzen vagy feltörje valaki más fiókját, akkor az átverés, és hozzáférést fog adni nekik az Ön Communifire Chat fiókjához.",
     "moreInfo": "További információkért nézze meg a https://go.rocket.chat/i/xss oldalt."
   },
   "sidebar": {

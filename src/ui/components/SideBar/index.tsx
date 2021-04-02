@@ -159,7 +159,7 @@ export const SideBar: FC = () => {
         {sortedServers.map((server, order) => <ServerButton
           key={server.url}
           url={server.url}
-          title={server.title === 'Communifire' && parseUrl(server.url).host !== 'open.rocket.chat'
+          title={server.title === 'Communifire Desktop Chat App' && parseUrl(server.url).host !== 'open.rocket.chat'
             ? `${ server.title } - ${ server.url }`
             : server.title}
           shortcutNumber={order <= 9 ? String(order + 1) : undefined}

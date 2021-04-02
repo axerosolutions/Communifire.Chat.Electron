@@ -132,7 +132,7 @@ jobs:
           CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
       - run: |
-          xvfb-run timeout 30 ./dist/linux-unpacked/communifire-desktop || code=$?
+          xvfb-run timeout 30 ./dist/linux-unpacked/communifirechat-desktop || code=$?
           if [[ $code -ne 124 && $code -ne 0 ]]; then
             exit $code;
           fi

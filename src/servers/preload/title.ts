@@ -9,7 +9,7 @@ export const setTitle = (title: string): void => {
 
   const url = getServerUrl();
 
-  if (title === 'Communifire' && new URL(url).host !== 'open.rocket.chat') {
+  if (title === 'Communifire Desktop Chat App' && new URL(url).host !== 'open.rocket.chat') {
     dispatch({
       type: WEBVIEW_TITLE_CHANGED,
       payload: {

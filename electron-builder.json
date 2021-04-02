@@ -20,7 +20,7 @@
     "bundleVersion": "82",
     "helperBundleId": "chat.rocket.electron.helper",
     "type": "distribution",
-    "artifactName": "communifire-${version}.${ext}",
+    "artifactName": "communifirechat-${version}.${ext}",
     "extendInfo": {
       "NSMicrophoneUsageDescription": "I need access to your microphone to record the audio you want to send.",
       "NSCameraUsageDescription": "I need access to your camera to record the video you want to send."
@@ -56,7 +56,7 @@
     "asarUnpack": [
       "node_modules"
     ],
-    "artifactName": "communifire-${version}-mas.${ext}"
+    "artifactName": "communifirechat-${version}-mas.${ext}"
   },
   "win": {
     "target": [
@@ -83,7 +83,7 @@
     "uninstallDisplayName": "${productName} ${version}",
     "include": "build/installer.nsh",
     "license": "LICENSE",
-    "artifactName": "communifire-setup-${version}.${ext}",
+    "artifactName": "communifirechat-setup-${version}.${ext}",
     "deleteAppDataOnUninstall": false,
     "displayLanguageSelector": false,
     "unicode": true,
@@ -94,18 +94,18 @@
     "menuCategory": false
   },
   "msi": {
-    "artifactName": "communifire-setup-${version}.${ext}"
+    "artifactName": "communifirechat-setup-${version}.${ext}"
   },
   "appx": {
     "backgroundColor": "#2f343d",
-    "displayName": "Communifire",
-    "publisherDisplayName": "Communifire",
+    "displayName": "Communifire Desktop Chat App",
+    "publisherDisplayName": "Communifire Desktop Chat App",
     "languages": [
       "en-US",
       "en-GB",
       "pt-BR"
     ],
-    "artifactName": "communifire-${version}-${arch}.${ext}"
+    "artifactName": "communifirechat-${version}-${arch}.${ext}"
   },
   "linux": {
     "target": [
@@ -114,22 +114,22 @@
       "rpm",
       "snap"
     ],
-    "executableName": "communifire-desktop",
+    "executableName": "communifirechat-desktop",
     "category": "GNOME;GTK;Network;InstantMessaging",
     "desktop": {
       "StartupWMClass": "Rocket.Chat",
       "MimeType": "x-scheme-handler/rocketchat"
     },
-    "artifactName": "communifire-${version}.${ext}"
+    "artifactName": "communifirechat-${version}.${ext}"
   },
   "deb": {
-    "artifactName": "communifire_${version}_${arch}.${ext}"
+    "artifactName": "communifirechat_${version}_${arch}.${ext}"
   },
   "rpm": {
-    "artifactName": "communifire-${version}.${arch}.${ext}"
+    "artifactName": "communifirechat-${version}.${arch}.${ext}"
   },
   "snap": {
-    "artifactName": "communifire_${version}_${arch}.${ext}",
+    "artifactName": "communifirechat_${version}_${arch}.${ext}",
     "plugs": [
       "desktop",
       "desktop-legacy",
