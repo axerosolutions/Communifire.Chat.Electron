@@ -7,7 +7,7 @@
     "build/icon.ico",
     "servers.json"
   ],
-  "appId": "chat.rocket",
+  "appId": "com.axero.chat",
   "mac": {
     "category": "public.app-category.productivity",
     "target": [
@@ -18,7 +18,7 @@
     ],
     "icon": "build/icon.icns",
     "bundleVersion": "82",
-    "helperBundleId": "chat.rocket.electron.helper",
+    "helperBundleId": "com.axero.chat.electron.helper",
     "type": "distribution",
     "artifactName": "communifirechat-${version}.${ext}",
     "extendInfo": {
