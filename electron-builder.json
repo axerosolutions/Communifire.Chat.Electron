@@ -9,12 +9,12 @@
   ],
   "appId": "com.axero.chat",
   "mac": {
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
     "category": "public.app-category.productivity",
     "target": [
       "dmg",
-      "pkg",
-      "zip",
-      "mas"
+      "zip"
     ],
     "icon": "build/icon.icns",
     "bundleVersion": "82",
