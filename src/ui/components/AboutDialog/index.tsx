@@ -5,7 +5,7 @@ import { useTranslation, Trans } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { copyright } from '../../../../package.json';
+// import { copyright } from '../../../../package.json';
 import { RootAction } from '../../../store/actions';
 import { RootState } from '../../../store/rootReducer';
 import { UPDATES_CHECK_FOR_UPDATES_REQUESTED } from '../../../updates/actions';
@@ -125,9 +125,9 @@ export const AboutDialog: FC = () => {
         </Margins>
       </Box>}
 
-      <Box alignSelf='center' fontScale='micro'>
+      {/* <Box alignSelf='center' fontScale='micro'>
         {t('dialog.about.copyright', { copyright })}
-      </Box>
+      </Box> */}
     </Margins>
   </Dialog>;
 };
