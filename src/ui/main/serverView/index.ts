@@ -143,11 +143,13 @@ const initializeServerWebContents = (serverUrl: string, guestWebContents: WebCon
 export const attachGuestWebContentsEvents = async (): Promise<void> => {
   const rootWindow = await getRootWindow();
   const handleWillAttachWebview = (_event: Event, webPreferences: WebPreferences, _params: Record<string, string>): void => {
+
     delete webPreferences.enableBlinkFeatures;
     webPreferences.preload = path.join(app.getAppPath(), 'app/preload.js');
     webPreferences.nodeIntegration = false;
     webPreferences.nodeIntegrationInWorker = true;
-    webPreferences.nodeIntegrationInSubFrames = true;
+    // webPreferences.nodeIntegrationInSubFrames = true;
+    webPreferences.nodeIntegrationInSubFrames = false;
     webPreferences.enableRemoteModule = false;
     webPreferences.webSecurity = true;
     webPreferences.contextIsolation = true;
@@ -179,7 +181,8 @@ export const attachGuestWebContentsEvents = async (): Promise<void> => {
 
       const newWindow = new BrowserWindow({
         ...options,
-        show: false,
+        // show: false,
+        show: true,
       });
 
       newWindow.once('ready-to-show', () => {

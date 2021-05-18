@@ -17,6 +17,11 @@ const start = (): void => {
     return;
   }
 
+  // Communifire JITSI window, skip other RC integrations intended for the main window.
+  if (window.location.pathname.startsWith('/jitsi/')) {
+    return;
+  }
+
   window.RocketChatDesktop.setServerInfo(serverInfo);
 
   const { Meteor } = window.require('meteor/meteor');
