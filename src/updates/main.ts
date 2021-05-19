@@ -117,9 +117,10 @@ const loadConfiguration = async (): Promise<UpdateConfiguration> => {
       skippedUpdateVersion,
     }: RootState) => ({
       isUpdatingAllowed:
-        (process.platform === 'linux' && !!process.env.APPIMAGE) ||
-        (process.platform === 'win32' && !process.windowsStore) ||
-        (process.platform === 'darwin' && !process.mas),
+        // (process.platform === 'linux' && !!process.env.APPIMAGE) ||
+        // (process.platform === 'win32' && !process.windowsStore) ||
+        // (process.platform === 'darwin' && !process.mas),
+        false,
       isEachUpdatesSettingConfigurable: true,
       isUpdatingEnabled,
       doCheckForUpdatesOnStartup,
