@@ -1,7 +1,8 @@
-name: Build
+name: Build and Release
 
 on:
   - push
+  - workflow_dispatch
 
 jobs:
   test:
@@ -34,7 +35,7 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn --check-files
-      - run: yarn eslint
+      - run: yarn lint
       - run: yarn build
         env:
           NODE_ENV: production
@@ -154,17 +155,17 @@ jobs:
         with:
           name: app
           path: ./app
-      - run: yarn electron-builder --ia32 --x64 --win nsis
+      - run: yarn electron-builder --publish onTagOrDraft --ia32 --x64 --win nsis
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
-      - run: yarn electron-builder --ia32 --win msi
+      - run: yarn electron-builder --publish onTagOrDraft --ia32 --win msi
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
-      - run: yarn electron-builder --x64 --win msi
+      - run: yarn electron-builder --publish onTagOrDraft --x64 --win msi
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
@@ -194,7 +195,7 @@ jobs:
       # Disable Spotlight indexing due to a error when generating DMG
       # See https://github.com/electron-userland/electron-builder/issues/4606#issuecomment-667641621
       - run: mdutil -a -i off
-      - run: yarn electron-builder
+      - run: yarn electron-builder --publish onTagOrDraft
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
@@ -226,20 +227,20 @@ jobs:
           name: app
           path: ./app
       # Snap builds must be separate as they aren't published in GitHub Releases
-      - run: yarn electron-builder --linux tar.gz deb rpm
+      - run: yarn electron-builder --publish onTagOrDraft --linux tar.gz deb rpm
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
       - uses: samuelmeuli/action-snapcraft@v1
         with:
           snapcraft_token: ${{ secrets.SNAP_TOKEN }}
       - if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        run: yarn electron-builder --publish always --linux snap -c.publish.1.provider=snapStore -c.publish.1.channel=stable
+        run: yarn electron-builder --publish always --linux snap -c.snap.publish.provider=snapStore -c.snap.publish.channels=stable
       - if: ${{ github.ref == 'refs/heads/master' }}
-        run: yarn electron-builder --publish always --linux snap -c.publish.1.provider=snapStore -c.publish.1.channel=candidate
+        run: yarn electron-builder --publish always --linux snap -c.snap.publish.provider=snapStore -c.snap.publish.channels=candidate
       - if: ${{ startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/hotfix/') }}
-        run: yarn electron-builder --publish always --linux snap -c.publish.1.provider=snapStore -c.publish.1.channel=beta
+        run: yarn electron-builder --publish always --linux snap -c.snap.publish.provider=snapStore -c.snap.publish.channels=beta
       - if: ${{ startsWith(github.ref, 'refs/heads/') }}
-        run: yarn electron-builder --publish always --linux snap -c.publish.1.provider=snapStore -c.publish.1.channel=edge
+        run: yarn electron-builder --publish always --linux snap -c.snap.publish.provider=snapStore -c.snap.publish.channels=edge
       - uses: actions/upload-artifact@v2
         with:
           name: linux-dist

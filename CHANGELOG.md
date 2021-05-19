@@ -1,3 +1,51 @@
+## [3.2.2](https://github.com/RocketChat/Rocket.Chat.Electron/compare/3.2.1...3.2.2) (2021-05-14)
+
+
+### Bug Fixes
+
+* **i18n:** Language update from LingoHub 🤖 ([#2032](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2032)) ([39719ef](https://github.com/RocketChat/Rocket.Chat.Electron/commit/39719ef60284381abf5c6b0356f8377858878f0c))
+* **jitsi:** JitsiMeetElectron unavailable on preload script ([#2031](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2031)) ([1322938](https://github.com/RocketChat/Rocket.Chat.Electron/commit/1322938290e5aca5b9e6c2f335d1ee0f1132b2bc))
+
+
+
+## [3.2.1](https://github.com/RocketChat/Rocket.Chat.Electron/compare/3.2.0...3.2.1) (2021-05-13)
+
+
+### Bug Fixes
+
+* **about-dialog:** About dialog not displaying version ([#2030](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2030)) ([f82823c](https://github.com/RocketChat/Rocket.Chat.Electron/commit/f82823c36a47eef448ed8a11045c8c0b162f4320))
+
+
+
+# [3.2.0](https://github.com/RocketChat/Rocket.Chat.Electron/compare/3.1.1...3.2.0) (2021-05-12)
+
+
+### Bug Fixes
+
+* **deps:** Update electron-builder ([b704680](https://github.com/RocketChat/Rocket.Chat.Electron/commit/b7046803e3394c288fa7ecf280c5221ac8e3d718))
+* User presence not updating ([#2023](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2023)) ([f10f24f](https://github.com/RocketChat/Rocket.Chat.Electron/commit/f10f24fbdbde4f21b2025f36b881066da846bd10))
+* **deps:** Patch dependencies ([1e976cc](https://github.com/RocketChat/Rocket.Chat.Electron/commit/1e976cc09d526ec639fc4ba35a4d1e30cbf31b3a))
+* **deps:** Upgrade build dependencies ([61aee42](https://github.com/RocketChat/Rocket.Chat.Electron/commit/61aee42123b7fbb7a02bc7963318100f2eb7c9f6))
+* Download button size ([#1960](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1960)) ([3424e6d](https://github.com/RocketChat/Rocket.Chat.Electron/commit/3424e6d297b48719c97362c7bb9fdad3cb068183))
+* macOS dock icon size ([#1941](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1941)) ([0eeb8b2](https://github.com/RocketChat/Rocket.Chat.Electron/commit/0eeb8b27c4f2b5b58ce12892aba5254801bb30bc))
+* Missing French translations ([#2014](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2014)) ([929e556](https://github.com/RocketChat/Rocket.Chat.Electron/commit/929e556352fb8043299958097180091f8360f2ec))
+* Stop grabbing focus when dom-ready is emitted; and restore window position correctly when x or y is 0 ([#1954](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1954)) ([c3ca0ef](https://github.com/RocketChat/Rocket.Chat.Electron/commit/c3ca0ef75ac29eb19934cfc8ddf0ad9d15681b3e)), closes [#1934](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1934) [#1934](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1934)
+* Tray icon toggle action ([#2006](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2006)) ([4d50b80](https://github.com/RocketChat/Rocket.Chat.Electron/commit/4d50b8085813398c55c51faa238c6f92819c2e7c)), closes [#1700](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1700) [#1935](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1935)
+* Update hu.i18n.json ([#1944](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1944)) ([e801f0f](https://github.com/RocketChat/Rocket.Chat.Electron/commit/e801f0f9d291fa7daefeefb085d240b13e0c425e))
+
+
+### Features
+
+* CLI argument '--start-hidden' to put the app in background on start ([#1407](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1407)) ([223a698](https://github.com/RocketChat/Rocket.Chat.Electron/commit/223a698a73bb0c0157d649189e5f2a68ea369e2e))
+* Flash root window on all platforms ([#1949](https://github.com/RocketChat/Rocket.Chat.Electron/issues/1949)) ([5934c56](https://github.com/RocketChat/Rocket.Chat.Electron/commit/5934c56f7a4551e3b527ba7ffb788648d501b80c))
+
+
+### Performance Improvements
+
+* TypeScript's strict mode ([#2015](https://github.com/RocketChat/Rocket.Chat.Electron/issues/2015)) ([1d5e612](https://github.com/RocketChat/Rocket.Chat.Electron/commit/1d5e61216ba91f77a8fc5fa676134cbbe9919af9))
+
+
+
 ## [3.1.1](https://github.com/RocketChat/Rocket.Chat.Electron/compare/3.1.0...3.1.1) (2020-12-25)
 
 

@@ -2,6 +2,7 @@ import { Notification, nativeImage, NativeImage } from 'electron';
 
 import { invoke } from '../ipc/main';
 import { dispatch, listen } from '../store';
+import { isResponse } from '../store/fsa';
 import { getRootWindow } from '../ui/main/rootWindow';
 import {
   NOTIFICATIONS_CREATE_REQUESTED,
@@ -15,9 +16,11 @@ import {
 } from './actions';
 import { ExtendedNotificationOptions } from './common';
 
-const resolveIcon = async (iconUrl: string): Promise<NativeImage> => {
+const resolveIcon = async (
+  iconUrl: string | undefined
+): Promise<NativeImage | undefined> => {
   if (!iconUrl) {
-    return null;
+    return undefined;
   }
 
   if (/^data:/.test(iconUrl)) {
@@ -26,27 +29,27 @@ const resolveIcon = async (iconUrl: string): Promise<NativeImage> => {
 
   try {
     const { webContents } = await getRootWindow();
-    const dataUri = await invoke(webContents, 'notifications/fetch-icon', iconUrl);
+    const dataUri = await invoke(
+      webContents,
+      'notifications/fetch-icon',
+      iconUrl
+    );
     return nativeImage.createFromDataURL(dataUri);
   } catch (error) {
     console.error(error);
-    return null;
+    return undefined;
   }
 };
 
 const notifications = new Map();
 
-const createNotification = async (id: string, {
-  title,
-  body,
-  icon,
-  silent,
-  canReply,
-  actions,
-}: ExtendedNotificationOptions): Promise<string> => {
+const createNotification = async (
+  id: string,
+  { title, body, icon, silent, canReply, actions }: ExtendedNotificationOptions
+): Promise<string> => {
   const notification = new Notification({
     title,
-    body,
+    body: body ?? '',
     icon: await resolveIcon(icon),
     silent,
     hasReply: canReply,
@@ -70,11 +73,17 @@ const createNotification = async (id: string, {
   });
 
   notification.addListener('reply', (_event, reply) => {
-    dispatch({ type: NOTIFICATIONS_NOTIFICATION_REPLIED, payload: { id, reply } });
+    dispatch({
+      type: NOTIFICATIONS_NOTIFICATION_REPLIED,
+      payload: { id, reply },
+    });
   });
 
   notification.addListener('action', (_event, index) => {
-    dispatch({ type: NOTIFICATIONS_NOTIFICATION_ACTIONED, payload: { id, index } });
+    dispatch({
+      type: NOTIFICATIONS_NOTIFICATION_ACTIONED,
+      payload: { id, index },
+    });
   });
 
   notifications.set(id, notification);
@@ -84,12 +93,10 @@ const createNotification = async (id: string, {
   return id;
 };
 
-const updateNotification = async (id: string, {
-  title,
-  body,
-  silent,
-  renotify,
-}: ExtendedNotificationOptions): Promise<string> => {
+const updateNotification = async (
+  id: string,
+  { title, body, silent, renotify }: ExtendedNotificationOptions
+): Promise<string> => {
   const notification = notifications.get(id);
 
   if (title) {
@@ -125,11 +132,15 @@ const handleCreateEvent = async ({
 
 export const setupNotifications = (): void => {
   listen(NOTIFICATIONS_CREATE_REQUESTED, async (action) => {
+    if (!isResponse(action)) {
+      return;
+    }
+
     dispatch({
       type: NOTIFICATIONS_CREATE_RESPONDED,
       payload: await handleCreateEvent(action.payload),
       meta: {
-        id: action.meta?.id,
+        id: action.meta.id,
         response: true,
       },
     });

@@ -2,23 +2,27 @@ import Bugsnag from '@bugsnag/js';
 import { app } from 'electron';
 
 import { APP_ERROR_THROWN } from './app/actions';
-import { select, dispatch, listen } from './store';
+import { select, listen } from './store';
 import { whenReady } from './whenReady';
 
 type AppType = 'main' | 'rootWindow' | 'webviewPreload';
 
-const setupBugsnag = (apiKey: string, appVersion: string, appType: AppType): void => {
+const setupBugsnag = (
+  apiKey: string,
+  appVersion: string,
+  appType: AppType
+): void => {
   Bugsnag.start({
     apiKey,
     appVersion,
     appType,
     collectUserIp: false,
     releaseStage: process.env.NODE_ENV,
-    ...appType === 'webviewPreload' && {
+    ...(appType === 'webviewPreload' && {
       onError: (event) => {
         event.context = window.location.href;
       },
-    },
+    }),
   });
 };
 
@@ -45,33 +49,19 @@ export const setupMainErrorHandling = async (): Promise<void> => {
   });
 };
 
-export const setupRendererErrorHandling = async (appType: AppType): Promise<void> => {
+export const setupRendererErrorHandling = async (
+  appType: AppType
+): Promise<void> => {
   await whenReady();
 
   if (process.env.BUGSNAG_API_KEY) {
     const apiKey = process.env.BUGSNAG_API_KEY;
     const appVersion = select(({ appVersion }) => appVersion);
+
+    if (!appVersion) {
+      throw new Error('app version was not set');
+    }
+
     setupBugsnag(apiKey, appVersion, appType);
-    return;
   }
-
-  const dispatchError = (error: Error): void => {
-    dispatch({
-      type: APP_ERROR_THROWN,
-      payload: {
-        message: error.message,
-        stack: error.stack,
-        name: error.name,
-      },
-      error: true,
-    });
-  };
-
-  window.addEventListener('error', (event): void => {
-    dispatchError(event.error);
-  });
-
-  window.addEventListener('unhandledrejection', (event): void => {
-    dispatchError(event.reason);
-  });
 };

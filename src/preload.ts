@@ -5,12 +5,15 @@ import { invoke } from './ipc/renderer';
 import { JitsiMeetElectron, JitsiMeetElectronAPI } from './jitsi/preload';
 import { listenToNotificationsRequests } from './notifications/preload';
 import { listenToScreenSharingRequests } from './screenSharing/preload';
-import { RocketChatDesktop, RocketChatDesktopAPI, serverInfo } from './servers/preload/api';
+import {
+  RocketChatDesktop,
+  RocketChatDesktopAPI,
+  serverInfo,
+} from './servers/preload/api';
 import { setServerUrl } from './servers/preload/urls';
 import { createRendererReduxStore } from './store';
 import { listenToMessageBoxEvents } from './ui/preload/messageBox';
 import { handleTrafficLightsSpacing } from './ui/preload/sidebar';
-import { listenToUserPresenceChanges } from './userPresence/preload';
 import { whenReady } from './whenReady';
 
 declare global {
@@ -20,11 +23,16 @@ declare global {
   }
 }
 
-contextBridge.exposeInMainWorld('JitsiMeetElectron', JitsiMeetElectron);
-contextBridge.exposeInMainWorld('RocketChatDesktop', RocketChatDesktop);
-
 const start = async (): Promise<void> => {
   const serverUrl = await invoke('server-view/get-url');
+
+  contextBridge.exposeInMainWorld('JitsiMeetElectron', JitsiMeetElectron);
+
+  if (!serverUrl) {
+    return;
+  }
+
+  contextBridge.exposeInMainWorld('RocketChatDesktop', RocketChatDesktop);
 
   setServerUrl(serverUrl);
 
@@ -42,7 +50,6 @@ const start = async (): Promise<void> => {
 
   listenToNotificationsRequests();
   listenToScreenSharingRequests();
-  listenToUserPresenceChanges();
   listenToMessageBoxEvents();
   handleTrafficLightsSpacing();
 };
