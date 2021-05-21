@@ -19,9 +19,20 @@ const start = (): void => {
   }
 
   // Communifire JITSI window, skip other RC integrations intended for the main window.
-  if (window.location.pathname.startsWith('/jitsi/')) {
-    return;
-  }
+  // if (window.location.pathname.startsWith('/jitsi/')) {
+  //   return;
+  // }
+
+  // if (window.location.href.includes('meet')) { //<<<
+  //   return;
+  // }
+
+  console.log('-------2');
+  console.log(window.location.href);
+  console.log(process.isMainFrame);
+  console.log('-------2');
+
+
 
   window.RocketChatDesktop.setServerInfo(serverInfo);
 

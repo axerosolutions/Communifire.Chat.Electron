@@ -163,12 +163,22 @@ export const attachGuestWebContentsEvents = async (): Promise<void> => {
     webPreferences.preload = path.join(app.getAppPath(), 'app/preload.js');
     webPreferences.nodeIntegration = false;
     webPreferences.nodeIntegrationInWorker = true;
-    // webPreferences.nodeIntegrationInSubFrames = true;
-    webPreferences.nodeIntegrationInSubFrames = false;
+    webPreferences.nodeIntegrationInSubFrames = true;
     webPreferences.enableRemoteModule = false;
     webPreferences.webSecurity = true;
     webPreferences.contextIsolation = true;
     webPreferences.worldSafeExecuteJavaScript = true;
+
+    // webPreferences.nodeIntegrationInSubFrames = true;
+    // webPreferences.nodeIntegration = true;
+    // webPreferences.affinity="X";
+    // webPreferences.allowRunningInsecureContent=true;
+    // // webPreferences.contextIsolation=false;
+    // webPreferences.enableRemoteModule = true;
+    // webPreferences.experimentalFeatures = true;
+    // webPreferences.sandbox = false;
+    // webPreferences.webSecurity = false;
+    // webPreferences.worldSafeExecuteJavaScript=false;
   };
 
   const handleDidAttachWebview = (
@@ -213,12 +223,13 @@ export const attachGuestWebContentsEvents = async (): Promise<void> => {
 
         const newWindow = new BrowserWindow({
           ...options,
-          show: false,
+          title: '',
+          // show: false,
         });
 
-        newWindow.once('ready-to-show', () => {
-          newWindow.show();
-        });
+        // newWindow.once('ready-to-show', () => {
+        //   newWindow.show();
+        // });
 
         isProtocolAllowed(url).then((allowed) => {
           if (!allowed) {

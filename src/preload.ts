@@ -32,6 +32,11 @@ const start = async (): Promise<void> => {
     return;
   }
 
+  // Communifire JITSI window, skip other RC integrations intended for the main window.
+  // if (window.location.pathname.startsWith('/jitsi/')) {
+  //   return;
+  // }
+
   contextBridge.exposeInMainWorld('RocketChatDesktop', RocketChatDesktop);
 
   setServerUrl(serverUrl);
