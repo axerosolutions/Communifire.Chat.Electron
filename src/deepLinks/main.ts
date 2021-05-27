@@ -14,10 +14,11 @@ import { getWebContentsByServerUrl } from '../ui/main/serverView';
 import { DEEP_LINKS_SERVER_FOCUSED, DEEP_LINKS_SERVER_ADDED } from './actions';
 
 const isRocketChatUrl = (parsedUrl: URL): boolean =>
-  parsedUrl.protocol === 'rocketchat:';
+  parsedUrl.protocol === 'wefire:';
 
 const isGoRocketChatUrl = (parsedUrl: URL): boolean =>
-  parsedUrl.protocol === 'https:' && parsedUrl.hostname === 'go.rocket.chat';
+  parsedUrl.protocol === 'https:' &&
+  parsedUrl.hostname === 'go.communifire.com';
 
 const parseDeepLink = (
   input: string

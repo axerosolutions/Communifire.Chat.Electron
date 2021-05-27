@@ -12,7 +12,7 @@ export const relaunchApp = (...args: string[]): void => {
 };
 
 export const performElectronStartup = (): void => {
-  app.setAsDefaultProtocolClient('rocketchat');
+  app.setAsDefaultProtocolClient('wefire');
   app.setAppUserModelId('com.axero.chat');
 
   app.commandLine.appendSwitch('--autoplay-policy', 'no-user-gesture-required');

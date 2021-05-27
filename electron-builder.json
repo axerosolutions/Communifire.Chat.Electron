@@ -118,7 +118,7 @@
     "category": "GNOME;GTK;Network;InstantMessaging",
     "desktop": {
       "StartupWMClass": "Rocket.Chat",
-      "MimeType": "x-scheme-handler/rocketchat"
+      "MimeType": "x-scheme-handler/wefire"
     },
     "artifactName": "communifirechat-${version}.${ext}"
   },
