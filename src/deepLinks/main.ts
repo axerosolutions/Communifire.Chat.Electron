@@ -17,8 +17,7 @@ const isRocketChatUrl = (parsedUrl: URL): boolean =>
   parsedUrl.protocol === 'wefire:';
 
 const isGoRocketChatUrl = (parsedUrl: URL): boolean =>
-  parsedUrl.protocol === 'https:' &&
-  parsedUrl.hostname === 'go.communifire.com';
+  parsedUrl.protocol === 'https:' && parsedUrl.hostname === 'go.cfire.in';
 
 const parseDeepLink = (
   input: string
