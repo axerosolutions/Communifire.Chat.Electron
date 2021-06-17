@@ -75,7 +75,17 @@ export const resolveServerUrl = async (
     if (
       !/(^https?:\/\/)|(\.)|(^([^:]+:[^@]+@)?localhost(:\d+)?$)/.test(input)
     ) {
-      return resolveServerUrl(`https://${input}.rocket.chat`);
+      return resolveServerUrl(`https://${input}.communifire.com`);
+    }
+
+    const strURL = url.toString();
+    if (strURL.startsWith('https://') && !strURL.startsWith('https://chat.')) {
+      const newURL = strURL.replace('https://', 'https://chat.');
+      const resolutionResult = await resolveServerUrl(newURL);
+      const [, result] = resolutionResult;
+      if (result === ServerUrlResolutionStatus.OK) {
+        return resolutionResult;
+      }
     }
 
     if (error?.name === 'AbortError') {
