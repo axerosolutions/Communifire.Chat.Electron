@@ -1,9 +1,9 @@
-import { Menu, app, /*shell,*/ MenuItemConstructorOptions } from 'electron';
+import { Menu, app, shell, MenuItemConstructorOptions } from 'electron';
 import i18next from 'i18next';
 import { createSelector, createStructuredSelector } from 'reselect';
 
 import { relaunchApp } from '../../app/main/app';
-// import { CERTIFICATES_CLEARED } from '../../navigation/actions';
+import { CERTIFICATES_CLEARED } from '../../navigation/actions';
 import { dispatch, select, Service } from '../../store';
 import { RootState } from '../../store/rootReducer';
 import {
@@ -16,7 +16,7 @@ import {
   MENU_BAR_TOGGLE_IS_TRAY_ICON_ENABLED_CLICKED,
   SIDE_BAR_DOWNLOADS_BUTTON_CLICKED,
 } from '../actions';
-// import { askForAppDataReset } from './dialogs';
+import { askForAppDataReset } from './dialogs';
 import { getRootWindow } from './rootWindow';
 import { getWebContentsByServerUrl } from './serverView';
 
@@ -506,7 +506,6 @@ const createWindowMenu = createSelector(
   })
 );
 
-/*
 const createHelpMenu = createSelector(
   () => undefined,
   (): MenuItemConstructorOptions => ({
@@ -514,6 +513,7 @@ const createHelpMenu = createSelector(
     label: t('menus.helpMenu'),
     role: 'help',
     submenu: [
+      /*
       {
         id: 'documentation',
         label: t('menus.documentation'),
@@ -531,6 +531,7 @@ const createHelpMenu = createSelector(
         },
       },
       { type: 'separator' },
+      */
       {
         id: 'reload-window',
         label: t('menus.reload'),
@@ -545,6 +546,7 @@ const createHelpMenu = createSelector(
           browserWindow.webContents.reload();
         },
       },
+      /*
       {
         id: 'toggleDevTools',
         label: t('menus.toggleDevTools'),
@@ -558,6 +560,7 @@ const createHelpMenu = createSelector(
           browserWindow.webContents.toggleDevTools();
         },
       },
+      */
       { type: 'separator' },
       {
         id: 'clearTrustedCertificates',
@@ -588,7 +591,7 @@ const createHelpMenu = createSelector(
         id: 'learnMore',
         label: t('menus.learnMore'),
         click: () => {
-          shell.openExternal('https://rocket.chat');
+          shell.openExternal('https://axerosolutions.com');
         },
       },
       ...on(process.platform !== 'darwin', () => [
@@ -609,7 +612,6 @@ const createHelpMenu = createSelector(
     ],
   })
 );
-*/
 
 const selectMenuBarTemplate = createSelector(
   [
@@ -617,7 +619,7 @@ const selectMenuBarTemplate = createSelector(
     createEditMenu,
     createViewMenu,
     createWindowMenu,
-    // createHelpMenu,
+    createHelpMenu,
   ],
   (...menus) => menus
 );
